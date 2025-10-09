@@ -1,0 +1,91 @@
+ECHO Configuring Security >>%temp%\configureTls.log
+ECHO ------------------------------------------------ >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319\SystemDefaultTlsVersions to 1  >>%temp%\configureTls.log
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319\ /v SystemDefaultTlsVersions /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319\SchUseStrongCrypto to 1  >>%temp%\configureTls.log
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319\ /v SchUseStrongCrypto /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319\SystemDefaultTlsVersions to 1  >>%temp%\configureTls.log
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319\ /v SystemDefaultTlsVersions /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319\SchUseStrongCrypto to 1  >>%temp%\configureTls.log
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319\ /v SchUseStrongCrypto /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO Disabling TLS1.0 and TLS1.1 >>%temp%\configureTls.log
+ECHO ------------------------------------------------ >>%temp%\configureTls.log
+
+ECHO Creating Registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0" >>%temp%\configureTls.log
+
+ECHO Creating Registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1" >>%temp%\configureTls.log
+
+ECHO Creating Registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client" >>%temp%\configureTls.log
+
+ECHO Creating Registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" >>%temp%\configureTls.log
+
+ECHO Creating Registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client" >>%temp%\configureTls.log
+
+ECHO Creating Registry key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\DisabledByDefault to 1 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\\" /v DisabledByDefault /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\Enabled to 0 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client\\" /v Enabled /t REG_DWORD /d 0 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\DisabledByDefault to 1 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\\" /v DisabledByDefault /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\Enabled to 0 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server\\" /v Enabled /t REG_DWORD /d 0 >>%temp%\configureTls.log
+
+ECHO HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client\DisabledByDefault to 1 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client\\" /v DisabledByDefault /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client\Enabled to 0 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client\\" /v Enabled /t REG_DWORD /d 0 >>%temp%\configureTls.log
+
+ECHO HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server\DisabledByDefault to 1 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server\\" /v DisabledByDefault /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server\Enabled >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server\\" /v Enabled /t REG_DWORD /d 0 >>%temp%\configureTls.log
+
+ECHO Enabling TLS1.2 >>%temp%\configureTls.log
+ECHO ------------------------------------------------ >>%temp%\configureTls.log
+
+ECHO Creating Registry Key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2" >>%temp%\configureTls.log
+
+ECHO Creating Registry Key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client" >>%temp%\configureTls.log
+
+ECHO Creating Registry Key HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client\DisabledByDefault to 0 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client\\" /v DisabledByDefault /t REG_DWORD /d 0 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client\Enabled to 1 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client\\" /v Enabled /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server\DisabledByDefault to 0 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server\\" /v DisabledByDefault /t REG_DWORD /d 0 >>%temp%\configureTls.log
+
+ECHO Configuring HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server\Enabled to 1 >>%temp%\configureTls.log
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server\\" /v Enabled /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+ECHO Enabling DCOM Hardening >>%temp%\configureTls.log
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole\AppCompat\ /v RequireIntegrityActivationAuthenticationLevel /t REG_DWORD /d 1 >>%temp%\configureTls.log
+
+
+ECHO To complete TLS configuration, the machine need a reboot. Press any key to reboot the machine!
+pause
+Shutdown -r
